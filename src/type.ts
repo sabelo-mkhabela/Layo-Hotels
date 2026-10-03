@@ -1,6 +1,6 @@
 //1. The Guest 
 
-interface Guest {
+export interface Guest {
     id: string;
     name: string;
     email: string;
@@ -24,13 +24,13 @@ console.log(`Guest: ${guest.name}, ${guest.email}`);
 //console.log(`Guest: ${g.name}, ${g.email}`);
 
 // 2. The Room 
-interface Room {
+export interface Room {
     RoomNumber: string;
     type: RoomType;
     Rate: number;
     Available: boolean;
 }
-type RoomType = "Standard" | "Deluxe" | "Suite";
+export type RoomType = "Standard" | "Deluxe" | "Suite";
 
 //const r: Room = {
 //    roomType: "Penthouse",
@@ -45,7 +45,7 @@ const room: Room = {
 console.log(`Room ${room.RoomNumber} at R${room.Rate.toFixed(2)} per night`);
 
 //3. The Booking 
-interface Booking {
+export interface Booking {
     bookingId: string;
     guest: Guest;
     room: Room;
@@ -54,7 +54,7 @@ interface Booking {
     status: BookingStatus;
 }
 
-type BookingStatus = "Confirmed" | "CheckedIn" | "CheckedOut" | "Cancelled";
+export type BookingStatus = "Confirmed" | "CheckedIn" | "CheckedOut" | "Cancelled";
 
 const booking: Booking = {
     bookingId: "9001",
