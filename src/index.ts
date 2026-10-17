@@ -1,4 +1,4 @@
-import type { Guest, Room, Booking, RoomType, BookingStatus } from "./type";
+import type { Guest, Room, Booking, RoomType, BookingStatus } from "./types";
 
 //import type { Guest, Room, Booking } from "./type";
 
@@ -23,32 +23,32 @@ const guest2: Guest = {
 
 const rooms: Room[] = [
     {
-        RoomNumber: "101",
-        type: "Standard",
+        roomNumber: "101",
+        roomType: "Standard",
         Rate: 850,
         Available: true
     },
     {
-        RoomNumber: "102",
-        type: "Standard",
+        roomNumber: "102",
+        roomType: "Standard",
         Rate: 850,
         Available: true
     },
     {
-        RoomNumber: "201",
-        type: "Deluxe",
+        roomNumber: "201",
+        roomType: "Deluxe",
         Rate: 1450,
         Available: true
     },
     {
-        RoomNumber: "202",
-        type: "Deluxe",
+        roomNumber: "202",
+        roomType: "Deluxe",
         Rate: 1450,
         Available: true
     },
     {
-        RoomNumber: "301",
-        type: "Suite",
+        roomNumber: "301",
+        roomType: "Suite",
         Rate: 2900,
         Available: true
     }
@@ -103,6 +103,6 @@ console.log(`${rooms.length} rooms, ${bookings.length} bookings`);
 
 for (const booking of bookings) {
     console.log(
-        `${booking.bookingId} ${booking.guest.name} ${booking.room.RoomNumber} ${nights(booking)} ${nights(booking) === 1 ? "night" : "nights"} ${booking.status}`
+        `${booking.bookingId} ${booking.guest.name} ${booking.room.roomNumber} ${nights(booking)} ${nights(booking) === 1 ? "night" : "nights"} ${booking.status}`
     );
 }
