@@ -1,0 +1,25 @@
+{
+  "name": "layo-hotels",
+  "version": "1.0.0",
+  "description": "Model guest / Room / Booking Layo Hotels is a hotel booking website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabelo-mkhabela/Layo-Hotels.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sabelo-mkhabela/Layo-Hotels/issues"
+  },
+  "homepage": "https://github.com/sabelo-mkhabela/Layo-Hotels#readme",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  }
+}
