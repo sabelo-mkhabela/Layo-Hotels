@@ -1,4 +1,4 @@
-import type { Guest, Room, Booking, RoomType, BookingStatus } from "./types";
+import type { Guest, Room, Booking, roomType, BookingStatus } from "./types";
 
 //import type { Guest, Room, Booking } from "./type";
 
@@ -25,32 +25,32 @@ const rooms: Room[] = [
     {
         roomNumber: "101",
         roomType: "Standard",
-        Rate: 850,
-        Available: true
+        rate: 850,
+        available: true
     },
     {
         roomNumber: "102",
         roomType: "Standard",
-        Rate: 850,
-        Available: true
+        rate: 850,
+        available: true
     },
     {
         roomNumber: "201",
         roomType: "Deluxe",
-        Rate: 1450,
-        Available: true
+        rate: 1450,
+        available: true
     },
     {
         roomNumber: "202",
         roomType: "Deluxe",
-        Rate: 1450,
-        Available: true
+        rate: 1450,
+        available: true
     },
     {
         roomNumber: "301",
         roomType: "Suite",
-        Rate: 2900,
-        Available: true
+        rate: 2900,
+        available: true
     }
 ];
 
