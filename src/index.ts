@@ -1,6 +1,5 @@
-import type { Guest, Room, Booking, roomType, BookingStatus } from "./types";
+import type { Guest, Room, Booking} from "./types";
 
-//import type { Guest, Room, Booking } from "./type";
 
 // Guests
 

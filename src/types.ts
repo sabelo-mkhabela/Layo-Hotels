@@ -11,11 +11,11 @@ export interface Guest {
 // 2. The Room 
 export interface Room {
     roomNumber: string;
-    roomType: roomType;
+    roomType: RoomType;
     rate: number;
     available: boolean;
 }
-export type roomType = "Standard" | "Deluxe" | "Suite";
+export type RoomType = "Standard" | "Deluxe" | "Suite";
 
 
 
