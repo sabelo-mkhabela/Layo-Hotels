@@ -1,21 +1,28 @@
-import type { Guest, Room, Booking} from "./types";
+import {Guest, Booking, Hotel} from "./types";
+import type {Room} from "./types";
 
 
 // Guests
 
-const guest1: Guest = {
-    id: "1",
-    name: "Thandi Mokoena",
-    email: "thandi@example.com",
-    phone: "0123456789"
-};
+const guest1 = new Guest (
+    "1",
+    "Thandi", 
+    "Mokoena",
+    "thandi@example.com",
+    "0123456789"
+);
 
-const guest2: Guest = {
-    id: "2",
-    name: "Sipho Dlamini",
-    email: "sipho@example.com",
-    phone: "0213456789"
-};
+console.log(`Guest: ${guest1.fullName()}`);
+
+console.log(`Contact: ${guest1.maskedPhone()}`);
+
+const guest2 = new Guest (
+    "2",
+    "Sipho", 
+    "Dlamini",
+    "sipho@example.com",
+    "0213456789"
+);
 
 
 // Rooms
@@ -25,83 +32,91 @@ const rooms: Room[] = [
         roomNumber: "101",
         roomType: "Standard",
         rate: 850,
-        available: true
+        available: true,
+        inService: true
     },
     {
         roomNumber: "102",
         roomType: "Standard",
         rate: 850,
-        available: true
+        available: true,
+        inService: true
     },
     {
         roomNumber: "201",
         roomType: "Deluxe",
         rate: 1450,
-        available: true
+        available: true,
+        inService: true
     },
     {
         roomNumber: "202",
         roomType: "Deluxe",
         rate: 1450,
-        available: true
+        available: true,
+        inService: false
     },
     {
         roomNumber: "301",
         roomType: "Suite",
         rate: 2900,
-        available: true
+        available: true,
+        inService: true
     }
 ];
 
 
-// Function from question 5
-
-function nights(booking: Booking): number {
-    const difference =
-        booking.checkOutDate.getTime() -
-        booking.checkInDate.getTime();
-
-    return Math.round(difference / (1000 * 60 * 60 * 24));
-}
+const hotel = new Hotel("Layo Hotels, Sea Point", rooms);
 
 
 // Bookings
 
 const bookings: Booking[] = [
-    {
-        bookingId: "9001",
-        guest: guest1,
-        room: rooms[2]!,
-        checkInDate: new Date("2026-10-02"),
-        checkOutDate: new Date("2026-10-05"),
-        status: "Confirmed"
-    },
-    {
-        bookingId: "9002",
-        guest: guest2,
-        room: rooms[0]!,
-        checkInDate: new Date("2026-10-06"),
-        checkOutDate: new Date("2026-10-07"),
-        status: "CheckedIn"
-    },
-    {
-        bookingId: "9003",
-        guest: guest1,
-        room: rooms[4]!,
-        checkInDate: new Date("2026-10-10"),
-        checkOutDate: new Date("2026-10-14"),
-        status: "Cancelled"
-    }
+    new Booking (
+        "9001",
+        guest1,
+        rooms[2]!,
+        new Date("2026-12-02"),
+        new Date("2026-12-05"),
+        "Confirmed"
+    ),
+        new Booking (
+        "9002",
+        guest2,
+        rooms[0]!,
+        new Date ("2026-10-06"),
+        new Date ("2026-10-07"),
+        "CheckedIn"
+        ),
+
+        new Booking (
+        "9003",
+        guest1,
+        rooms[4]!,
+        new Date("2026-12-10"),
+        new Date("2026-12-14"),
+        "Cancelled"
+        )
+
 ];
-
-
-// Summary
-
-console.log("Layo Hotels");
-console.log(`${rooms.length} rooms, ${bookings.length} bookings`);
 
 for (const booking of bookings) {
     console.log(
-        `${booking.bookingId} ${booking.guest.name} ${booking.room.roomNumber} ${nights(booking)} ${nights(booking) === 1 ? "night" : "nights"} ${booking.status}`
+        `Booking ${booking.bookingId} can cancel: ${booking.canBeCancelled()}`
+    );
+}
+
+console.log(`Total cost: R${bookings[0]!.totalCost().toFixed(2)}`);
+
+ console.log(`Booking ${bookings[0]!.bookingId}: ${bookings[0]!.nights()} nights`);
+
+// Summary
+
+console.log(hotel.name);
+console.log(`${hotel.roomCount()} rooms, ${hotel.roomsInService()} in service`);
+
+for (const booking of bookings) {
+    console.log(
+        `${booking.bookingId} ${booking.guest.fullName()} ${booking.room.roomNumber} ${booking.nights()} nights ${booking.status}`
     );
 }
