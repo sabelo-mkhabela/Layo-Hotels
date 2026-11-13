@@ -73,7 +73,8 @@ export type BookingStatus = "Confirmed" | "CheckedIn" | "CheckedOut" | "Cancelle
 export class Hotel {
     constructor(
         public name: string,
-        public rooms: Room[]
+        public rooms: Room[],
+        public bookings: Booking[]
     ) {}
 
     roomCount(): number {
@@ -83,7 +84,29 @@ export class Hotel {
     roomsInService(): number {
         return this.rooms.filter(room => room.inService).length;
     }
+
+    availableRooms(checkIn: Date, checkOut: Date): Room[] {
+    return this.rooms.filter(room => {
+        if (!room.available || !room.inService) {
+            return false;
+        }
+
+        for (const booking of this.bookings) {
+            if (
+                booking.room.roomNumber === room.roomNumber &&
+                booking.status !== "Cancelled" &&
+                booking.checkInDate < checkOut &&
+                checkIn < booking.checkOutDate
+            ) {
+                return false;
+            }
+        }
+
+        return true;
+    });
 }
+}
+
 
 
 

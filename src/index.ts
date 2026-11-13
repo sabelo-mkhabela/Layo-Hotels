@@ -66,8 +66,6 @@ const rooms: Room[] = [
 ];
 
 
-const hotel = new Hotel("Layo Hotels, Sea Point", rooms);
-
 
 // Bookings
 
@@ -100,6 +98,8 @@ const bookings: Booking[] = [
 
 ];
 
+const hotel = new Hotel("Layo Hotels, Sea Point", rooms, bookings);
+
 for (const booking of bookings) {
     console.log(
         `Booking ${booking.bookingId} can cancel: ${booking.canBeCancelled()}`
@@ -119,4 +119,15 @@ for (const booking of bookings) {
     console.log(
         `${booking.bookingId} ${booking.guest.fullName()} ${booking.room.roomNumber} ${booking.nights()} nights ${booking.status}`
     );
+
+
 }
+
+const freeRooms = hotel.availableRooms(
+    new Date("2026-12-02"),
+    new Date("2026-12-05")
+);
+
+console.log(
+    `Rooms free: ${freeRooms.map(room => room.roomNumber).join(", ")}`
+);
